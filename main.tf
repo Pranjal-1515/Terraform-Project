@@ -4,10 +4,21 @@ provider "aws"{
     region = "ap-south-1"
 }
 
+module "security-group" {
+  source = "./Modules/security-group"
+
+  name         = "my-ec2-sg"
+  vpc_id       = var.vpc_id
+  ingress_rules = local.ingress_rules
+  egress_rules  = local.egress_rules
+}
+
 module "aws_instance"{
-    source         = "./Modules/ec2"
-    instance_count = var.instance_count
-    instance_type  = var.instance_type
-    ami_id         = var.ami_id
-    name_prefix    = var.name_prefix
+    source             = "./Modules/EC2"
+    instance_count     = var.instance_count
+    instance_type      = var.instance_type
+    ami_id             = var.ami_id
+    name_prefix        = var.name_prefix
+    subnet_id          = var.subnet_id
+    security_group_ids = [module.security-group.security_group_id]
 }
