@@ -20,3 +20,11 @@ variable "name_prefix" {
   description = "Prefix for the instance names"
   type        = string
 }
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "security_group_ids" {
+  type = list(string)
+}
