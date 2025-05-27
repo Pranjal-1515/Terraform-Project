@@ -28,3 +28,20 @@ variable "vpc_id" {
 variable "subnet_id" {
   type = string
 }
+
+variable "bucket_name" {
+  type        = string
+  description = "Name of the S3 bucket"
+}
+
+variable "versioning" {
+  type        = bool
+  description = "Enable versioning on the bucket"
+  default     = false
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags for the S3 bucket"
+  default     = {}
+}
