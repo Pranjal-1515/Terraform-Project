@@ -22,3 +22,11 @@ module "aws_instance"{
     subnet_id          = var.subnet_id
     security_group_ids = [module.security-group.security_group_id]
 }
+
+module "my_s3_bucket" {
+  source      = "./modules/s3_bucket"
+  bucket_name = var.bucket_name
+  versioning  = var.versioning
+  tags        = var.tags
+}
+
