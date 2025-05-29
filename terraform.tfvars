@@ -8,3 +8,6 @@ versioning  = true
 tags = {
   Project     = "terraform-module"
 }
+group_name = "example-group"
+user_name  = "example-user"
+policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
