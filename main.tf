@@ -30,3 +30,11 @@ module "my_s3_bucket" {
   tags        = var.tags
 }
 
+module "iam" {
+  source        = "./modules/IAM"
+  group_name    = var.group_name
+  user_name     = var.user_name
+  policy_arn    = var.policy_arn
+}
+
+
